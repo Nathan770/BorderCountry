@@ -65,6 +65,7 @@ public class mainFirstFragment extends Fragment {  // first fragment - listview 
      */
     // TODO: Rename and change types and number of parameters
     public static mainFirstFragment newInstance(String param1, String param2) {
+        Log.d("nathan", "newInstance: parms1" + param1 + " parms2" + param2);
         mainFirstFragment fragment = new mainFirstFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -76,9 +77,11 @@ public class mainFirstFragment extends Fragment {  // first fragment - listview 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.d("nathan", "onCreate: "+ getArguments());
         if (getArguments() != null) {
+            Log.d("nathan", "onCreate: get arg"+ getArguments().getString(ARG_PARAM1));
             mParam1 = getArguments().getString(ARG_PARAM1);
+            Log.d("nathan", "onCreate: parm"+ mParam1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
@@ -92,18 +95,14 @@ public class mainFirstFragment extends Fragment {  // first fragment - listview 
         final DataService ds = new DataService();
         final View v = inflater.inflate(R.layout.fragment_main_first, container, false);
 
-       allstates =  ds.getArrState();
+        allstates =  ds.getArrState();
        theListView = v.findViewById(R.id.ListViewsir);
        layoutManager = new LinearLayoutManager(getContext());
        theListView.setLayoutManager(layoutManager);
-       theAdapter = new StateAdapter(getActivity(),allstates);
+       theAdapter = new StateAdapter(getActivity(),allstates, true);
+       theListView.setAdapter(theAdapter);
 
 
-        for (State s : allstates) {
-            Log.d("nathan", "onCreateView: "+s.getName());
-        }
-
-         theListView.setAdapter(theAdapter);
 
       //  theListView.setOnTouchListener(sd);
        // theListView.setTextFilterEnabled(true);
@@ -119,8 +118,9 @@ public class mainFirstFragment extends Fragment {  // first fragment - listview 
             public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
                 // When user changed the Text
 
-                    theAdapter = new StateAdapter(getActivity(), theAdapter.custumeFilter(allstates, cs.toString()));
-                    theListView.setAdapter( theAdapter);
+
+                theAdapter = new StateAdapter(getActivity(), theAdapter.custumeFilter(allstates, cs.toString()),true);
+                theListView.setAdapter( theAdapter);
 
             }
 

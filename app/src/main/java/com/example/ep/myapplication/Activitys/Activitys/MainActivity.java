@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity implements mainFirstFragment
 
     public void GoBack() { // return to first fragment
 
-        Fragment f;
-        getSupportFragmentManager().popBackStack();
-        int num = getSupportFragmentManager().getBackStackEntryCount();
-        f = getSupportFragmentManager().findFragmentByTag("0");
-        getSupportFragmentManager().beginTransaction().replace(R.id.fregment_container, f,(getSupportFragmentManager().getBackStackEntryCount()-1)+"").commit();
+      Fragment f ;
+      getSupportFragmentManager().popBackStack();
+      int num = getSupportFragmentManager().getBackStackEntryCount();
+      f = getSupportFragmentManager().findFragmentByTag("0");
+      getSupportFragmentManager().beginTransaction().replace(R.id.fregment_container, f,(getSupportFragmentManager().getBackStackEntryCount()-1)+"").commit();
 
         flag=0;
     }

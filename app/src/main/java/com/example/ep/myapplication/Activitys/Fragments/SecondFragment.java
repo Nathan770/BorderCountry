@@ -93,7 +93,6 @@ public class SecondFragment extends Fragment { // second fragment - borders
 
             @Override
             public void onClick(View v) {
-
                 Go_back_fragment();
             }
         });
@@ -114,7 +113,7 @@ public class SecondFragment extends Fragment { // second fragment - borders
         if(arrR.size() == 0 )
         Toast.makeText(getActivity() , "Soory No Borders" , Toast.LENGTH_LONG).show();
 
-        theAdapter = new StateAdapter(getActivity(),arrR);
+        theAdapter = new StateAdapter(getActivity(),arrR, false);
 
 
         theListView =  v.findViewById(R.id.ListViewRe);
@@ -134,9 +133,9 @@ public class SecondFragment extends Fragment { // second fragment - borders
         }
     }
     private void Go_back_fragment() {
+        mainFirstFragment.newInstance("lo" ,"tov");
 
         MainActivity mainActivity = (MainActivity) getActivity();
-
         mainActivity.GoBack();
 
     }

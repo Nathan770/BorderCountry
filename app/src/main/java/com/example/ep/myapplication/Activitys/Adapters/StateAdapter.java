@@ -4,18 +4,18 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ep.myapplication.Activitys.Activitys.MainActivity;
 import com.example.ep.myapplication.Activitys.Model.State;
 import com.example.ep.myapplication.R;
-import com.squareup.picasso.Picasso;
+
 
 import java.util.ArrayList;
 
@@ -23,14 +23,27 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ViewHolder> 
 
     private Context context;
     private ArrayList<State> allstates;
+    private boolean first;
 
-    public StateAdapter(Context context, ArrayList<State> allstates) {
+    public StateAdapter(Context context, ArrayList<State> allstates , boolean provide) {
+
         this.context = context;
         this.allstates = allstates;
+        this.first = provide;
+
+        Log.d("nathan", "StateAdapter: "+ provide + " num states " + allstates.size());
+
     }
 
-    public ArrayList<State> custumeFilter(ArrayList<State> allstates, String toString) {
-        return null;
+    public ArrayList<State> custumeFilter(ArrayList<State> allstates, String key) {
+        ArrayList<State> states = new ArrayList<>();
+
+        for (State s : allstates) {
+            if(s.getName().toLowerCase().startsWith(key.toLowerCase())){
+                states.add(s);
+            }
+        }
+        return states;
     }
 
     @NonNull
@@ -47,7 +60,7 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ViewHolder> 
         if (holder != null) {
             holder.name_LBL.setText(temp.getName());
             holder.nativeName_LBL.setText(temp.getNativeName());
-        if(allstates.size() > 50){
+        if(first){
             holder.country_LAY_crd.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -66,6 +79,9 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
+       if (allstates == null){
+           return 0;
+       }
         return allstates.size();
     }
 
