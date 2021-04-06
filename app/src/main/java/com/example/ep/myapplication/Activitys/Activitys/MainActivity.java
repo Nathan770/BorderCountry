@@ -8,14 +8,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 
 import com.example.ep.myapplication.Activitys.Fragments.SecondFragment;
 import com.example.ep.myapplication.Activitys.Fragments.mainFirstFragment;
 import com.example.ep.myapplication.Activitys.Model.State;
 import com.example.ep.myapplication.R;
 
-import java.io.Serializable;
 
 
 public class MainActivity extends AppCompatActivity implements mainFirstFragment.OnFirstFragmentInteractionListener, SecondFragment.OnSecondFragmentInteractionListener {

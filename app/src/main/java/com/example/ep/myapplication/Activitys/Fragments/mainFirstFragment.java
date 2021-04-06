@@ -12,14 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
-import com.example.ep.myapplication.Activitys.Activitys.MainActivity;
 import com.example.ep.myapplication.Activitys.Adapters.StateAdapter;
 import com.example.ep.myapplication.Activitys.Model.State;
 import com.example.ep.myapplication.Activitys.Services.DataService;

@@ -4,8 +4,6 @@ import android.os.AsyncTask;
 import android.os.NetworkOnMainThreadException;
 import android.os.StrictMode;
 import android.util.Log;
-import android.widget.Toast;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,7 +14,6 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 
-import com.example.ep.myapplication.Activitys.Activitys.MainActivity;
 import com.example.ep.myapplication.Activitys.Model.State;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
